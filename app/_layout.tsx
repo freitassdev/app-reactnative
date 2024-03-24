@@ -14,7 +14,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: '(pages)',
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -24,6 +24,9 @@ export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
+    'Poppins-Regular': require('@/assets/fonts/Poppins-Regular.ttf'),
+    'Quicksand-Regular': require('@/assets/fonts/Quicksand-Regular.ttf'),
+    'Quicksand-SemiBold': require('@/assets/fonts/Quicksand-SemiBold.ttf'),
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -50,8 +53,9 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(pages)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="internal" options={{ headerShown: false }} />
       </Stack>
     </ThemeProvider>
   );

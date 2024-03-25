@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.freitasdev.appexpo"
     },
     "web": {
       "bundler": "metro",
@@ -42,6 +43,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "54d118c6-b695-4d2d-b4db-51b485851612"
+      }
+    },
+    "owner": "freitasdev"
   }
 }

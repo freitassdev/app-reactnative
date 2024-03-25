@@ -4,18 +4,45 @@ import { useState } from 'react';
 import logo from '@/assets/images/logo.png';
 import bg from '@/assets/images/background.png';
 
+import { Dropdown } from 'react-native-element-dropdown';
 import { Text, View, Image, TextInput, Pressable } from '@/components/Themed';
-import { EvilIcons } from '@expo/vector-icons';
+import { Ionicons, EvilIcons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
+
+const curses = [
+  { label: 'DS Integrado ao E. Médio', value: 'ds' },
+  { label: 'Eletrônica', value: 'je' },
+  { label: 'Logística', value: 'jl' },
+  { label: 'Segurança do Trabalho', value: 'st' },
+  { label: 'Administração', value: 'adm' },
+];
 
 export default function CreateAccountPage() {
   const [rm, setRm] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [curso, setCurso] = useState<string>('');
+
+  const renderItem = (item: {
+    label: string;
+    value: string;
+  }, selected?: boolean | undefined) => {
+    return (
+      <View style={styles.item}>
+        <Text style={styles.textItem}>{item.label}</Text>
+        {item.value === curso && (
+          <Ionicons name="checkbox-outline" size={24} color="white" />
+        )}
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground source={bg} style={styles.background}>
         <View style={styles.returnButton}>
-          <EvilIcons size={52} name="chevron-left" color="white" />
+          <Link href="/">
+            <EvilIcons size={52} name="chevron-left" color="white" />
+          </Link>
         </View>
         <View style={styles.logoContainer}>
           <Image source={logo} style={styles.image} />
@@ -30,13 +57,39 @@ export default function CreateAccountPage() {
               const formattedText = text.replace(/[.-]/g, '');
               setRm(formattedText);
             }} />
-          <TextInput placeholder='Email Institucional' />
-          <TextInput placeholder='Selecione seu Curso' />
+
+          <TextInput value={email} onChangeText={(text) => setEmail(text)}
+            placeholder='Email Institucional' />
+
+          <Dropdown
+            style={styles.dropdown}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            activeColor='#07346c'
+            iconStyle={styles.iconStyle}
+            containerStyle={styles.dropContainer}
+            itemContainerStyle={styles.itemContainerStyle}
+            fontFamily='Quicksand-Regular'
+            data={curses}
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            placeholder="Selecione seu Curso"
+            value={curso}
+            onChange={item => {
+              setCurso(item.value);
+            }}
+            renderItem={renderItem}
+          />
         </View>
         <View style={styles.buttonContainer}>
-          <Pressable title="Criar Conta" style={{
-            width: '100%',
-          }}></Pressable>
+          <Link href="/internal/" asChild>
+            <Pressable title="Criar Conta" style={{
+              width: '100%',
+            }} />
+          </Link>
+          <Text>Já possui uma conta?</Text>
+          <Link href="/"><Text style={{ color: "#00BFFE" }}>Entre agora!</Text></Link>
         </View>
       </ImageBackground>
     </View>
@@ -101,5 +154,67 @@ const styles = StyleSheet.create({
     // marginTop: 'auto',
     bottom: 80,
     width: '80%',
-  }
+  },
+
+  dropdown: {
+    width: "100%",
+    height: 50,
+    backgroundColor: '#082245',
+    borderRadius: 12,
+    padding: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+
+    elevation: 2,
+    color: 'white',
+  },
+  dropContainer: {
+    borderRadius: 10,
+    backgroundColor: "#082245",
+    borderColor: '#082245',
+    marginTop: 5,
+  },
+  icon: {
+    marginRight: 5,
+  },
+  item: {
+    padding: 17,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: "#082245",
+    // borderColor: '#082245',
+    borderRadius: 10,
+    borderBottomColor: 'white',
+    borderBottomWidth: 0.2,
+  },
+  textItem: {
+    flex: 1,
+    fontSize: 15,
+    color: 'white',
+  },
+  placeholderStyle: {
+    fontSize: 15,
+    color: 'white',
+  },
+  selectedTextStyle: {
+    fontFamily: 'Quicksand-Regular',
+    color: "white",
+    fontSize: 15,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+
+  itemContainerStyle: {
+    backgroundColor: "#082245",
+    borderColor: '#082245',
+    borderRadius: 10,
+  },
 });

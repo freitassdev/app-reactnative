@@ -42,7 +42,7 @@ export default function LoginPage() {
         </View>
         <View style={styles.buttonContainer}>
           <Text>Não possui uma conta?</Text>
-          <Text style={{ color: "#00BFFE" }}>Crie agora!</Text>
+          <Link href="/create"><Text style={{ color: "#00BFFE" }}>Crie agora!</Text></Link>
         </View>
       </ImageBackground>
     </View>

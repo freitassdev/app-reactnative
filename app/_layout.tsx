@@ -27,6 +27,7 @@ export default function RootLayout() {
     'Poppins-Regular': require('@/assets/fonts/Poppins-Regular.ttf'),
     'Quicksand-Regular': require('@/assets/fonts/Quicksand-Regular.ttf'),
     'Quicksand-SemiBold': require('@/assets/fonts/Quicksand-SemiBold.ttf'),
+    'Quicksand-Medium': require('@/assets/fonts/Quicksand-Medium.ttf')
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -53,9 +54,9 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(pages)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-        <Stack.Screen name="internal" options={{ headerShown: false }} />
+        <Stack.Screen name="(pages)" options={{ headerShown: false, animation: "fade_from_bottom"}}  />
+        <Stack.Screen name="modal" options={{ presentation: 'modal', animation: "fade_from_bottom" }} />
+        <Stack.Screen name="internal" options={{ headerShown: false, animation: "fade_from_bottom" }} />
       </Stack>
     </ThemeProvider>
   );

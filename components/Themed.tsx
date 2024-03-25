@@ -64,6 +64,7 @@ export function TextInput(props: DefaultInput['props']) {
     borderRadius: 12,
     marginBottom: 10,
     fontFamily: 'Quicksand-Regular',
+    fontSize: 15,
     height: 50,
   }
   return <DefaultInput style={[customStyles, style]} placeholderTextColor="white" {...otherProps} />;

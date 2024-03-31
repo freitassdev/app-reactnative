@@ -44,7 +44,7 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="index"
                 options={{
-                    title: 'Noticias',
+                    title: 'Home',
                     tabBarIcon: ({ focused }) => <View style={{
                         display: "flex",
                         flexDirection: "column",
@@ -52,27 +52,26 @@ export default function TabLayout() {
 
                     }}>
                         <Ionicons name={focused ? "home" : "home-outline"} size={28} color={focused ? Colors.light.tint : '#16232f'} />
-                        <Text style={{ color: focused ? Colors.light.tint : '#16232f' }}>Notícias</Text>
+                        <Text style={{ color: focused ? Colors.light.tint : '#16232f' }}>Home</Text>
                     </View>,
                     tabBarShowLabel: false,
 
                     headerTransparent: true,
                     headerShown: false,
-
                 }}
             />
             <Tabs.Screen
-                name="profile"
+                name="warns"
                 options={{
-                    title: 'Perfil',
+                    title: 'Avisos',
                     tabBarIcon: ({ focused }) => <View style={{
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
                         
                     }}>
-                        <Ionicons name={focused ? "person" : "person-outline"} size={28} color={focused ? Colors.light.tint : '#16232f'} />
-                        <Text style={{ color: focused ? Colors.light.tint : '#16232f' }}>Perfil</Text>
+                        <Ionicons name={focused ? "chatbubbles" : "chatbubbles-outline"} size={28} color={focused ? Colors.light.tint : '#16232f'} />
+                        <Text style={{ color: focused ? Colors.light.tint : '#16232f' }}>Avisos</Text>
                     </View>,
                     tabBarShowLabel: false,
                     headerTransparent: true,
@@ -102,7 +101,7 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="student-area"
                 options={{
-                    title: 'Área do Aluno',
+                    title: 'Aluno',
                     tabBarIcon: ({ focused }) => <View style={{
                         display: "flex",
                         flexDirection: "column",
@@ -110,7 +109,7 @@ export default function TabLayout() {
                         
                     }}>
                         <Ionicons name={focused ? "school" : "school-outline"} size={28} color={focused ? Colors.light.tint : '#16232f'} />
-                        <Text style={{ color: focused ? Colors.light.tint : '#16232f' }}>Área do Aluno</Text>
+                        <Text style={{ color: focused ? Colors.light.tint : '#16232f' }}>Aluno</Text>
                     </View>,
                     tabBarShowLabel: false,
                     headerTransparent: true,

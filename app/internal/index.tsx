@@ -1,52 +1,67 @@
 import { ImageBackground, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import { useState } from 'react';
 
-import logo from '@/assets/images/logo.png';
 import bg from '@/assets/images/background.png';
+import nube from '@/assets/images/parterns/nube.png';
+import ciee from '@/assets/images/parterns/ciee.png';
+import leapy from '@/assets/images/parterns/leapy.png';
 
 import { Text, View, Image, TextInput, Pressable } from '@/components/Themed';
 import { Link } from 'expo-router';
+import GeralNotice from '@/components/shared/notices/geralNotice';
+import ClassNotice from '@/components/shared/notices/classNotice';
+import JobsPartern from '@/components/shared/jobsParterns';
 
 const screenWidth = Dimensions.get("window").width
 
 export default function Home() {
   const [rm, setRm] = useState<string>('');
   return (
-    <View style={styles.container}>
-      <ImageBackground source={bg} style={styles.background}>
+    <ScrollView style={styles.container}>
+      <ImageBackground source={bg} style={styles.background} >
         <View style={styles.mainView}>
-
-          <View style={styles.scrollViewTitle}>
+          <View style={styles.sectionTitle}>
             <Text style={{
-              fontSize: 18
-            }}>Notícias</Text>
+              fontSize: 20,
+              fontFamily: 'Poppins-Medium',
+            }}>Notícias Gerais</Text>
+            <View style={styles.divisor}></View>
           </View>
           <ScrollView horizontal
             decelerationRate="fast"
             alwaysBounceHorizontal={true}
             contentContainerStyle={styles.scrollView}
-            showsHorizontalScrollIndicator={true}
+            showsHorizontalScrollIndicator={false}
             style={{
               maxHeight: "30%",
+              marginTop: 20,
             }}
           >
             {[...Array(5)].map((_, i) => (
-              <View key={i} style={styles.noticeContainer}>
-                <View style={styles.notice}>
-                  <Text style={styles.noticeTitle}>Noticia do Dia</Text>
-                  <Text style={styles.noticeText}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt suscipit molestias ipsum quis id fugiat praesentium dolore aspernatur reprehenderit consectetur repellendus asperiores reiciendis autem ipsa, repudiandae rem numquam sit esse?.</Text>
-                </View>
-              </View>
+              <GeralNotice key={i} />
             ))}
           </ScrollView>
+
+          
+          <View style={styles.sectionTitle}>
+            <Text style={{
+              fontSize: 20,
+              fontFamily: 'Poppins-Medium',
+            }}>Parceiros de Estágio</Text>
+            <View style={styles.divisor}></View>
+          </View>
+          <View style={styles.jobsContainer}>
+            <JobsPartern image={ciee} parternDesc='Quer ficar por dentro das nossas...' parternName='CIEE'/>
+            <JobsPartern image={nube} parternDesc='Quer ficar por dentro de mim? 🤤...' parternName='Nube'/>
+            <JobsPartern image={leapy} parternDesc='Quer ficar por dentro das nossas...' parternName='Leapy'/>
+          </View>
         </View>
       </ImageBackground>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-
   container: {
     display: 'flex',
     height: '100%',
@@ -58,12 +73,13 @@ const styles = StyleSheet.create({
   },
   mainView: {
     display: "flex",
-    paddingTop: "20%",
+    paddingTop: "10%",
+    paddingBottom: "10%",
     width: "100%",
     height: "100%",
   },
-  scrollViewTitle: {
-    // marginTop: 100,
+  sectionTitle: {
+    marginTop: 20,
     height: 40,
     paddingHorizontal: 25,
   },
@@ -74,27 +90,12 @@ const styles = StyleSheet.create({
     height: "100%",
     paddingHorizontal: 20,
   },
-  noticeContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+  divisor: {
+    width: "100%",
+    height: 2.5,
+    backgroundColor: "#ffffff",
   },
-  notice: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
-    padding: 20,
-    width: (screenWidth * 0.85),
-  },
-  noticeTitle: {
-    color: "black",
-    fontFamily: "Quicksand-SemiBold"
-  },
-  noticeText: {
-    color: "black",
-    fontFamily: "Quicksand-Medium"
+  jobsContainer: {
+    paddingHorizontal: 20,
   }
 });

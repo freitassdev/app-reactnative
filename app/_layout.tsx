@@ -24,6 +24,8 @@ export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     ...FontAwesome.font,
+    'Tinos-Bold': require('@/assets/fonts/Tinos-Bold.ttf'),
+    'Poppins-Medium': require('@/assets/fonts/Poppins-Medium.ttf'),
     'Poppins-Regular': require('@/assets/fonts/Poppins-Regular.ttf'),
     'Quicksand-Regular': require('@/assets/fonts/Quicksand-Regular.ttf'),
     'Quicksand-SemiBold': require('@/assets/fonts/Quicksand-SemiBold.ttf'),

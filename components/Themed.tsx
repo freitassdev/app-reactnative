@@ -8,7 +8,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from './useColorScheme';
-import { useCallback } from 'react';
+import { useCallback, forwardRef } from 'react';
 
 type ThemeProps = {
   lightColor?: string;
@@ -70,7 +70,7 @@ export function TextInput(props: DefaultInput['props']) {
   return <DefaultInput style={[customStyles, style]} placeholderTextColor="white" {...otherProps} />;
 }
 
-export function Pressable(props: PressableProps) {
+export const Pressable = forwardRef((props: PressableProps, ref: any) => {
   const { style, title = "Sem Titulo", ...otherProps } = props;
   const defaultStyle = {
     height: 50,
@@ -84,5 +84,14 @@ export function Pressable(props: PressableProps) {
     marginBottom: 10,
     fontFamily: 'Quicksand-Regular',
   }
-  return <DefaultPressable style={state => [defaultStyle, typeof style === 'function' ? style(state) : style]} {...otherProps}><Text style={{ color: 'black', fontSize: 16 }}>{title}</Text></DefaultPressable>;
-}
+  return <DefaultPressable
+    ref={ref}
+    style={state => [defaultStyle, typeof style === 'function' ? style(state) : style]}
+    {...otherProps}>
+    <Text
+      style={{
+        color: 'black',
+        fontSize: 16
+      }}>{title}</Text>
+  </DefaultPressable>;
+});

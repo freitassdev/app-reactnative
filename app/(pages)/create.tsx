@@ -10,7 +10,7 @@ import { Ionicons, EvilIcons } from '@expo/vector-icons';
 import { Link } from 'expo-router';
 
 const curses = [
-  { label: 'DS Integrado ao E. Médio', value: 'ds' },
+  { label: 'Desenvolvimento de Sistemas', value: 'ds' },
   { label: 'Eletrônica', value: 'je' },
   { label: 'Logística', value: 'jl' },
   { label: 'Segurança do Trabalho', value: 'st' },

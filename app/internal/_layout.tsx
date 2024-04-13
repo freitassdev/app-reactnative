@@ -61,6 +61,25 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
+                name="subjects"
+                options={{
+                    title: 'Matérias',
+                    tabBarIcon: ({ focused }) => <View style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        
+                    }}>
+                        <Ionicons name={focused ? "book" : "book-outline"} size={28} color={focused ? Colors.light.tint : '#16232f'} />
+                        <Text style={{ color: focused ? Colors.light.tint : '#16232f' }}>Matérias</Text>
+                    </View>,
+                    tabBarShowLabel: false,
+                    headerTransparent: true,
+                    headerShown: false,
+
+                }}
+            />
+            <Tabs.Screen
                 name="warns"
                 options={{
                     title: 'Avisos',
